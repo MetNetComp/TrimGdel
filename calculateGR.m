@@ -1,7 +1,6 @@
 function [grRules] = calculateGR(model,xname)
-%UNTITLED2 ���̊֐��̊T�v�������ɋL�q
-%   �ڍא����������ɋL�q
-
+%calculateGR is a submodule to extract GPR relations.
+% Nov. 12, 2021  Takeyuki TAMURA
 grRules=cell(size(model.rxns));
 for i=1:size(model.grRules,1)
     grRules{i,1}=model.grRules{i,1};
@@ -29,6 +28,5 @@ for i=1:size(grRules,1)
        grRules{i,4}=-1; 
     end
 end
-%save('calculateGR.mat');
 end
 

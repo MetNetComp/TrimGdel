@@ -1,4 +1,6 @@
 function [f,intcon,A,b,Aeq,beq,lb,ub,xname] = geneReactionMILP(model,term,ng,nt,nr,nko,reactionKO)
+%geneReactionMILP is a submodule to convert GPR relations to MILP.
+% Nov. 12, 2021  Takeyuki TAMURA
 n_and=0;n_or=0;n_equal=0;
 for i=1:size(term,2)
     switch char(term(i).function)
@@ -33,7 +35,6 @@ end
 
 jj=1;kk=1;
 for i=1:size(term,2)
-    %i
     k=size(term(i).input,1);    
     x=find(strcmp(xname(:,1),term(i).output));
     switch char(term(i).function)
@@ -64,6 +65,5 @@ for i=1:size(term,2)
             kk=kk+1;
     end
 end
-%save('geneReactionMILP.mat');
 end
 

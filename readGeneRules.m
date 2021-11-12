@@ -1,5 +1,5 @@
 function [term,ng,nt,nr,nko,reactionKO,reactionKO2term] = readGeneRules(model)
-% readGeneRules is a function of gDel_minRN that reads
+% readGeneRules is a function of TrimGdel that reads
 % gene-protein-reaction relations and outputs the necessary
 % information for the MILP formalization 
 %
@@ -23,7 +23,7 @@ function [term,ng,nt,nr,nko,reactionKO,reactionKO2term] = readGeneRules(model)
 % nr  the number of reactions
 % nko the number of repressible reactions
 % 
-% Apr. 22 2021   Takeyuki TAMURA
+% Nov. 12 2021   Takeyuki TAMURA
 %
 model.grRules;
 x=1;y=1;reactionKO=0;qq=0;ww=0;
@@ -107,7 +107,6 @@ for i=1:nt+nko
     end
 end
 term=term2;
-%save('readGeneRules.mat');
 
 end
 

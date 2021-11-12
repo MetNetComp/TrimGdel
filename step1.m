@@ -1,11 +1,11 @@
 function [gvalue success] = step1(model,targetMet,maxLoop,PRLB,GRLB)
-% gDel-minRN that determines gene deletion strategies 
-%by mixed integer linear programming to achieve growth coupling 
-%for the target metabolite by repressing the maximum number of reactions 
-%via gene-protein-reaction relations.
+%step1 employs gDel_minRN to obtain a large gene deletions strategy,
+%derives which reactions are repressed, and determines the initial GR and PR. 
+%The initial GR and PR values will be the minimum requirements 
+%that TrimGdel must finally satisfy.
 %
-%function [vg gr pr it success]  
-%   = gDel_minRN(model,targetMet,maxit,PRLB,GRLB)
+%function [gvalue success]  
+%   = gDel_minRN(model,targetMet,maxloop,PRLB,GRLB)
 %
 %INPUTS
 % model     COBRA model structure containing the following required fields to perform gDel_minRN.
@@ -33,17 +33,14 @@ function [gvalue success] = step1(model,targetMet,maxLoop,PRLB,GRLB)
 %                     strategy candidates. 
 %
 %OUTPUTS
-% vg        0/1 vector indicating which genes should be deleted.
+% gvalue      The first column is the list of genes.
+%             The second column is a 0/1 vector indicating which genes should be deleted.
 %             0 indicates genes to be deleted.
 %             1 indecates genes to be remained.
-% gr         the growth rate obained when the gene deletion strategy is
-%              applied and the growth rate is maximized.
-% pr         the target metabolite production rate obained 
-%              when the gene deletion strategy is applied and the growth rate is maximized.
-% success  indicates whether gDel_minRN obained an appropriate gene
+% success     indicates whether gDel_minRN obained an appropriate gene
 %               deletion strategy. (1:success, 0:failure)
 %
-%   Apr. 22, 2021  Takeyuki TAMURA
+%   Nov. 12, 2021  Takeyuki TAMURA
 %
 tic
 gr=-1;pr=-1;it=0;success=0;
@@ -52,7 +49,6 @@ options=cplexoptimset('cplex');
 options.mip.tolerances.integrality=10^(-12);
 %options=cplexoptimset('TolXInteger',10^(-12));
 
-sss=sprintf('step1.mat');
 ori_model=model;
 [model,targetRID,extype] = modelSetting(model,targetMet)
 
@@ -71,12 +67,10 @@ model2.c(targetRID)=1;
 if optPre.stat<=0 
     display('no solution 1')
     gvalue=[];
-    save(sss);
     return;
 elseif -optPre.f < PRLB
     display('No solution since TMPR < PRLB')
     gvalue=[];
-    save(sss);
     return;
 end
     
@@ -153,12 +147,10 @@ while it<=maxLoop
         system('rm -f clone*.log');
         if it==1
             display('no solution 2')
-            save('a.mat');
             return;
         end
         display('no more candidates')
         system('rm -f clone*.log');
-        save(sss);
         return;
     end
     [grRules] = calculateGR(model,gvalue);
@@ -183,7 +175,6 @@ while it<=maxLoop
         success=1;
         system('rm -f clone*.log');
         time=toc
-        save(sss);
         return;
     end
     
@@ -195,10 +186,6 @@ while it<=maxLoop
 
     it=it+1;
     system('rm -f clone*.log');
-    save(sss);
 end
-%vg=vg>0.1;
-time=toc
-save(sss);
 end
 

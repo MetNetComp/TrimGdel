@@ -1,4 +1,46 @@
 function [gvalue, finalGRPR, size1, size2, size3] = step2and3(model,targetMet,givenGvalue)
+%Step 2 minimizes the number of deleted genes while maintaining 
+%which reactions are repressed.
+%Step 3 trims unnecessary deleted genes while maintaining GR and PR
+%at the maximization of GR.
+%
+%function [gvalue, finalGRPR, size1, size2, size3] = step2and3(model,targetMet,givenGvalue)
+%
+%INPUTS
+% model     COBRA model structure containing the following required fields to perform gDel_minRN.
+%   rxns                    Rxns in the model
+%   mets                    Metabolites in the model
+%   genes               Genes in the model
+%   grRules            Gene-protein-reaction relations in the model
+%   S                       Stoichiometric matrix (sparse)
+%   b                       RHS of Sv = b (usually zeros)
+%   c                       Objective coefficients
+%   lb                      Lower bounds for fluxes
+%   ub                      Upper bounds for fluxes
+%   rev                     Reversibility of fluxes
+%
+% targetMet   target metabolites
+%             (e.g.,  'btn_c')
+% givenGvalue  a large gene deletion strategy (obtained by step1).
+%              The first column is the list of genes.
+%              The second column is a 0/1 vector indicating which genes should be deleted.
+%              0 indicates genes to be deleted.
+%              1 indecates genes to be remained.
+%
+%OUTPUTS
+% givenGvalue  a small gene deletion strategy (obtained by TrimGdel).
+%              The first column is the list of genes.
+%              The second column is a 0/1 vector indicating which genes should be deleted.
+%              0 indicates genes to be deleted.
+%              1 indecates genes to be remained.
+% finalGRPR    indicates GR after step1, PR after step1, GR after step3 and
+%              PR after step3. 
+% size1        the size of the gene deletion strategy after step1.
+% size2        the size of the gene deletion strategy after step2.
+% size3        the size of the gene deletion strategy after step3.
+%
+%   Nov. 12, 2021  Takeyuki TAMURA
+%
 tic
 options=cplexoptimset('cplex');
 options.mip.tolerances.integrality=10^(-12);

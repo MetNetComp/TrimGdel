@@ -1,5 +1,5 @@
 function [model2,targetRID,extype] = modelSetting(model,targetMet)
-% modelSetting is a function of gDel_minRN that adds an auxiliary
+% modelSetting is a function of TrimGdel that adds an auxiliary
 % exchange reaction for the target metabolite when there is no
 % original corresponding exchange reaction.
 %
@@ -27,7 +27,7 @@ function [model2,targetRID,extype] = modelSetting(model,targetMet)
 %                       1,2: there was the corresponding exchange reaction.
 %                        3: An auxiliary exchange reaction was added.
 %
-%  Apr. 22, 2021   Takeyuki TAMURA
+%  Nov. 12, 2021   Takeyuki TAMURA
 %
 target=findMetIDs(model,targetMet);
 m=size(model.mets,1);
@@ -51,6 +51,5 @@ else
     targetRID=n;
     extype=3;
 end
-%save('modelSetting.mat');
 end
 
