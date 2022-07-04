@@ -24,3 +24,4 @@ In the output, “gvalue3” includes the 0/1 vector indicating which genes shou
 
 Details are described in the comments in the source codes.
 
+T. Tamura, "Trimming gene deletion strategies for growth-coupled production in constraint-based metabolic networks: TrimGdel," in IEEE/ACM Transactions on Computational Biology and Bioinformatics, 2022, doi: 10.1109/TCBB.2022.3185221.
