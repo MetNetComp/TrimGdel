@@ -14,7 +14,7 @@ Run the test code for TrimGdel
 
 The test code is run by the following command:
 
->> test()
+   test()
 
 “test()” loads a MATLAB matfile “e_coli_core.mat” containing a core metabolic model of E.coli, and employs “TrimGdel” to obtain the small gene deletion strategy for growth coupling of succinate.
 
