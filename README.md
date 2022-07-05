@@ -5,10 +5,14 @@ About TrimGdel
 
 TrimGdel aims to find the smallest gene deletion strategy for growth coupled production by removing unnecessary gene deletions from a large gene deletion strategy obtained by gDel_minRN for a given target metabolite and constraint-based model.
 
+
 Necessary environments
+
 An environment where MATLAB, CPLEX, COBRA Toolbox can run is required.
 
+
 Run the test code for TrimGdel
+
 The test code is run by the following command:
 
 >> test()
