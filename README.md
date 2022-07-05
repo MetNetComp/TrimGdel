@@ -22,9 +22,9 @@ The test code is run by the following command:
 Example code
 “example1” employs TrimGdel to calculate a gene deletion strategy for biotin (btn_c) in iML1515.
 
-> load(‘iML1515.mat’)
-> 
-> [success, gvalue3, finalGRPR, size1, size2, size3]=TrimGdel(iML1515, ’btn_c’)
+  load(‘iML1515.mat’)
+
+  [success, gvalue3, finalGRPR, size1, size2, size3]=TrimGdel(iML1515, ’btn_c’)
 
 
 In the output, “gvalue3” includes the 0/1 vector indicating which genes should be deleted.
