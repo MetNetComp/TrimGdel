@@ -1,6 +1,8 @@
 # TrimGdel
 How to use TrimGdel
+
 About TrimGdel
+
 TrimGdel aims to find the smallest gene deletion strategy for growth coupled production by removing unnecessary gene deletions from a large gene deletion strategy obtained by gDel_minRN for a given target metabolite and constraint-based model.
 
 Necessary environments
