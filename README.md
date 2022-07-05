@@ -23,6 +23,7 @@ Example code
 “example1” employs TrimGdel to calculate a gene deletion strategy for biotin (btn_c) in iML1515.
 
 > load(‘iML1515.mat’)
+> 
 > [success, gvalue3, finalGRPR, size1, size2, size3]=TrimGdel(iML1515, ’btn_c’)
 
 
