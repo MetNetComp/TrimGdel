@@ -28,6 +28,7 @@ Example code
 
 
 In the output, “gvalue3” includes the 0/1 vector indicating which genes should be deleted.
+
      0: genes to be deleted.  1: genes to remain.
 
 
