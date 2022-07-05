@@ -1,5 +1,4 @@
-# TrimGdel
-How to use TrimGdel
+# How to use TrimGdel
 
 About TrimGdel
 
