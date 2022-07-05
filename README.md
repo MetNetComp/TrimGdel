@@ -18,15 +18,19 @@ The test code is run by the following command:
 
 “test()” loads a MATLAB matfile “e_coli_core.mat” containing a core metabolic model of E.coli, and employs “TrimGdel” to obtain the small gene deletion strategy for growth coupling of succinate.
 
+
 Example code
 “example1” employs TrimGdel to calculate a gene deletion strategy for biotin (btn_c) in iML1515.
 
 > load(‘iML1515.mat’)
 > [success, gvalue3, finalGRPR, size1, size2, size3]=TrimGdel(iML1515, ’btn_c’)
 
+
 In the output, “gvalue3” includes the 0/1 vector indicating which genes should be deleted.
      0: genes to be deleted.  1: genes to remain.
 
+
 Details are described in the comments in the source codes.
+
 
 T. Tamura, "Trimming gene deletion strategies for growth-coupled production in constraint-based metabolic networks: TrimGdel," in IEEE/ACM Transactions on Computational Biology and Bioinformatics, 2022, doi: 10.1109/TCBB.2022.3185221.
