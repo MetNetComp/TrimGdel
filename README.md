@@ -1,16 +1,16 @@
 # How to use TrimGdel
 
-About TrimGdel
+1 About TrimGdel
 
 TrimGdel aims to find the smallest gene deletion strategy for growth coupled production by removing unnecessary gene deletions from a large gene deletion strategy obtained by gDel_minRN for a given target metabolite and constraint-based model.
 
 
-Necessary environments
+1 Necessary environments
 
 An environment where MATLAB, CPLEX, COBRA Toolbox can run is required.
 
 
-Run the test code for TrimGdel
+1 Run the test code for TrimGdel
 
 The test code is run by the following command:
 
@@ -19,7 +19,7 @@ The test code is run by the following command:
 “test()” loads a MATLAB matfile “e_coli_core.mat” containing a core metabolic model of E.coli, and employs “TrimGdel” to obtain the small gene deletion strategy for growth coupling of succinate.
 
 
-Example code
+1 Example code
 “example1” employs TrimGdel to calculate a gene deletion strategy for biotin (btn_c) in iML1515.
 
     load(‘iML1515.mat’)
